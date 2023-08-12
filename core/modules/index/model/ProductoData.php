@@ -45,100 +45,68 @@ class ProductoData
       }
     }
     
-    public static function insertProducto(
-      $pro_id,
-      $pro_descripcion,
-      $pro_precio_c,
-      $pro_precio_v,
-      $pro_stock,
-      $pro_fecha_elab,
-      $pro_nivel_azucar,
-      $pro_aplica_iva,
-      $pro_especifica,
-      $pro_imagen,
-      $marca_id,
-      $catego_id
+    public static function insertEditorial(
+      $editorial_id,
+      $nombre_editorial,
+      $direccion,
+      $telefono_editorial
     ) {
       try {
-        $sql = "INSERT INTO tab_productos (pro_id,pro_descripcion,pro_precio_c,pro_precio_v,pro_stock,pro_fecha_elab,pro_nivel_azucar,pro_aplica_iva,pro_especifica,pro_imagen,marca_id,catego_id)
-        VALUES(:ppro_id,:ppro_descripcion,:ppro_precio_c,:ppro_precio_v,
-        :ppro_stock,:ppro_fecha_elab,:ppro_nivel_azucar,:ppro_aplica_iva,
-        :ppro_especifica,:ppro_imagen,:pmarca_id,:pcatego_id)";
+        $sql = "INSERT INTO tab_editorial (ID_EDITORIAL, NOMBRE_EDITORIAL, DIRECCION, TELEFONO_EDITORIAL)
+        VALUES(:peditorial_id, :pnombre_editorial, :pdireccion, :ptelefono_editorial)";
         $conexion = Database::getCon();
         $stmt = $conexion->prepare($sql);
-        $stmt->bindparam(":ppro_id", $pro_id);
-        $stmt->bindparam(":ppro_descripcion", $pro_descripcion);
-        $stmt->bindparam(":ppro_precio_c", $pro_precio_c);
-        $stmt->bindparam(":ppro_precio_v", $pro_precio_v);
-        $stmt->bindparam(":ppro_stock", $pro_stock);
-        $stmt->bindparam(":ppro_fecha_elab", $pro_fecha_elab);
-        $stmt->bindparam(":ppro_nivel_azucar", $pro_nivel_azucar);
-        $stmt->bindparam(":ppro_aplica_iva", $pro_aplica_iva);
-        $stmt->bindparam(":ppro_especifica", $pro_especifica);
-        $stmt->bindparam(":ppro_imagen", $pro_imagen);
-        $stmt->bindparam(":pmarca_id", $marca_id);
-        $stmt->bindparam(":pcatego_id", $catego_id);
+        $stmt->bindparam(":peditorial_id", $editorial_id);
+        $stmt->bindparam(":pnombre_editorial", $nombre_editorial);
+        $stmt->bindparam(":pdireccion", $direccion);
+        $stmt->bindparam(":ptelefono_editorial", $telefono_editorial);
         $stmt->execute();
-        return true; //OPCIONAL
+        return true; // Opcional
       } catch (PDOException $e) {
         echo $e->getMessage();
-        return false; //OPCIONAL
+        return false; // Opcional
       }
     }
+
     
-    public static function updateProducto(
-      $pro_id, $pro_descripcion, $pro_precio_c,
-      $pro_precio_v, $pro_stock,  $pro_fecha_elab,
-      $pro_nivel_azucar,  $pro_aplica_iva,  $pro_especifica,
-      $pro_imagen,  $marca_id,  $catego_id
+    public static function updateEditorial(
+      $editorial_id,
+      $nombre_editorial,
+      $direccion,
+      $telefono_editorial
     ) {
       try {
-        $sql = "UPDATE tab_productos SET 
-               pro_descripcion=:ppro_descripcion,
-               pro_precio_c=:ppro_precio_c,
-               pro_precio_v=:ppro_precio_v,
-               pro_stock=:ppro_stock,
-               pro_fecha_elab=:ppro_fecha_elab,
-               pro_nivel_azucar=:ppro_nivel_azucar,
-               pro_aplica_iva=:ppro_aplica_iva,
-               pro_especifica=:ppro_especifica,
-               pro_imagen=:ppro_imagen,
-               marca_id=:pmarca_id,
-               catego_id=:pcatego_id 
-               WHERE pro_id=:ppro_id";
+        $sql = "UPDATE tab_editorial SET 
+               NOMBRE_EDITORIAL=:pnombre_editorial,
+               DIRECCION=:pdireccion,
+               TELEFONO_EDITORIAL=:ptelefono_editorial
+               WHERE ID_EDITORIAL=:peditorial_id";
         $conexion = Database::getCon();
         $stmt = $conexion->prepare($sql);
-        $stmt->bindparam(":ppro_id", $pro_id);
-        $stmt->bindparam(":ppro_descripcion", $pro_descripcion);
-        $stmt->bindparam(":ppro_precio_c", $pro_precio_c);
-        $stmt->bindparam(":ppro_precio_v", $pro_precio_v);
-        $stmt->bindparam(":ppro_stock", $pro_stock);
-        $stmt->bindparam(":ppro_fecha_elab", $pro_fecha_elab);
-        $stmt->bindparam(":ppro_nivel_azucar", $pro_nivel_azucar);
-        $stmt->bindparam(":ppro_aplica_iva", $pro_aplica_iva);
-        $stmt->bindparam(":ppro_especifica", $pro_especifica);
-        $stmt->bindparam(":ppro_imagen", $pro_imagen);
-        $stmt->bindparam(":pmarca_id", $marca_id);
-        $stmt->bindparam(":pcatego_id", $catego_id);
+        $stmt->bindparam(":peditorial_id", $editorial_id);
+        $stmt->bindparam(":pnombre_editorial", $nombre_editorial);
+        $stmt->bindparam(":pdireccion", $direccion);
+        $stmt->bindparam(":ptelefono_editorial", $telefono_editorial);
         $stmt->execute();
-        return true; //OPCIONAL
+        return true; // Opcional
       } catch (PDOException $e) {
         echo $e->getMessage();
-        return false; //OPCIONAL
+        return false; // Opcional
       }
     }
-    
-    public static function deleteProducto($pro_id) {
-      try {
-        $sql ="DELETE FROM tab_productos WHERE pro_id=:ppro_id";
-        $conexion = Database::getCon();
-        $stmt = $conexion->prepare($sql);
-        $stmt->bindparam(":ppro_id", $pro_id);
-        $stmt->execute();
-      } catch (PDOException $e) {
-        echo $e->getMessage();
-      }
-    }
+
+public static function deleteEditorial($editorial_id) {
+  try {
+    $sql ="DELETE FROM tab_editorial WHERE ID_EDITORIAL=:peditorial_id";
+    $conexion = Database::getCon();
+    $stmt = $conexion->prepare($sql);
+    $stmt->bindparam(":peditorial_id", $editorial_id);
+    $stmt->execute();
+  } catch (PDOException $e) {
+    echo $e->getMessage();
+  }
+}
+
     
 
 
