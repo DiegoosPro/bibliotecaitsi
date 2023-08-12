@@ -1,4 +1,4 @@
-<?php
+<?php 
 class EditorialData {
 
   public static function getAllEditoriales()
@@ -102,5 +102,6 @@ class EditorialData {
       echo $e->getMessage();
     }
   }
+
 }
-?>
+ ?>

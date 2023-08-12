@@ -98,7 +98,7 @@ if (isset($_POST['btnDelete'])) {
                         <div class="col-6">
                           <div class="card card-primary">
                             <div class="card-body">
-                              <input type="hidden" name="txtFotoAnterior" value="<?php echo $datosEditorial['NOMBRE_EDITORIAL']; ?>">
+                            
                               <label>Código :</label>
                               <div class="input-group mb-3">
                                 <span class="input-group-text" id="basic-addon1">@</span>
@@ -122,6 +122,8 @@ if (isset($_POST['btnDelete'])) {
                                 <span class="input-group-text" id="basic-addon1">@</span>
                                 <input type="text" name="txtTelefonoEditorial" value="<?php echo $datosEditorial['TELEFONO_EDITORIAL']; ?>" class="form-control" placeholder="Teléfono">
                               </div>
+                              <button type="submit" name="btnUpdate" class="btn btn-primary btn-sm mt-2">Actualizar</button>
+
                             </div>
                           </div>
                         </div>
@@ -205,6 +207,8 @@ if (isset($_POST['btnDelete'])) {
                     <span class="input-group-text" id="basic-addon1">@</span>
                     <input type="text" name="txtTelefonoEditorial" class="form-control" placeholder="Teléfono">
                   </div>
+                  <button type="submit" name="btnGrabar" class="btn btn-primary btn-sm mt-2">Guardar</button>
+
                 </div>
               </div>
             </div>
