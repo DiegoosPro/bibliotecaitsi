@@ -1,4 +1,3 @@
-<h1>PAGINA EDITORIALES</h1>
 <?php
 
 $datos = EditorialData::getAllEditoriales();
@@ -50,7 +49,20 @@ if (isset($_POST['btnDelete'])) {
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ModalNuevo">
     Agregar Nueva Editorial
 </button>
-<table class="table table-striped">
+
+<br>
+<section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-12">
+
+             <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">PAGINA EDITORIALES</h3>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+                <table id="example1" class="table table-bordered table-striped">
   <thead>
     <tr>
       <th scope="col">ID</th>
@@ -81,58 +93,57 @@ if (isset($_POST['btnDelete'])) {
 
             <!-- Modal  EDITAR-->
             <div class="modal fade" id="ModalEditar<?php echo $row['ID_EDITORIAL']; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-              <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h4 class="modal-title">Actualización de datos</h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Actualización de datos</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <?php
+        $datosEditorial = EditorialData::getEditorialById($row['ID_EDITORIAL']);
+        ?>
+        <form method="post" enctype="multipart/form-data">
+          <div class="row">
+            <div class="col-md-12"> <!-- Cambio aquí -->
+              <div class="card card-primary">
+                <div class="card-body">
+                  <label>Código :</label>
+                  <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">@</span>
+                    <input type="text" name="txtCodigo" id="txtCodigoId" value="<?php echo $datosEditorial['ID_EDITORIAL']; ?>" readonly class="form-control" placeholder="Código">
                   </div>
-                  <div class="modal-body">
-                    <?php
-                    $datosEditorial = EditorialData::getEditorialById($row['ID_EDITORIAL']);
-                    ?>
-                    <form method="post" enctype="multipart/form-data">
-                      <div class="row">
-                        <div class="col-6">
-                          <div class="card card-primary">
-                            <div class="card-body">
-                            
-                              <label>Código :</label>
-                              <div class="input-group mb-3">
-                                <span class="input-group-text" id="basic-addon1">@</span>
-                                <input type="text" name="txtCodigo" id="txtCodigoId" value="<?php echo $datosEditorial['ID_EDITORIAL']; ?>" readonly class="form-control" placeholder="Código">
-                              </div>
 
-                              <label>Nombre Editorial :</label>
-                              <div class="input-group mb-3">
-                                <span class="input-group-text" id="basic-addon1">@</span>
-                                <input type="text" name="txtNombreEditorial" value="<?php echo $datosEditorial['NOMBRE_EDITORIAL']; ?>" class="form-control" placeholder="Nombre Editorial">
-                              </div>
-
-                              <label>Dirección :</label>
-                              <div class="input-group mb-3">
-                                <span class="input-group-text" id="basic-addon1">@</span>
-                                <input type="text" name="txtDireccion" value="<?php echo $datosEditorial['DIRECCION']; ?>" class="form-control" placeholder="Dirección">
-                              </div>
-
-                              <label>Teléfono :</label>
-                              <div class="input-group mb-3">
-                                <span class="input-group-text" id="basic-addon1">@</span>
-                                <input type="text" name="txtTelefonoEditorial" value="<?php echo $datosEditorial['TELEFONO_EDITORIAL']; ?>" class="form-control" placeholder="Teléfono">
-                              </div>
-                              <button type="submit" name="btnUpdate" class="btn btn-primary btn-sm mt-2">Actualizar</button>
-
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </form>
+                  <label>Nombre Editorial :</label>
+                  <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">@</span>
+                    <input type="text" name="txtNombreEditorial" value="<?php echo $datosEditorial['NOMBRE_EDITORIAL']; ?>" class="form-control" placeholder="Nombre Editorial">
                   </div>
+
+                  <label>Dirección :</label>
+                  <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">@</span>
+                    <input type="text" name="txtDireccion" value="<?php echo $datosEditorial['DIRECCION']; ?>" class="form-control" placeholder="Dirección">
+                  </div>
+
+                  <label>Teléfono :</label>
+                  <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">@</span>
+                    <input type="text" name="txtTelefonoEditorial" value="<?php echo $datosEditorial['TELEFONO_EDITORIAL']; ?>" class="form-control" placeholder="Teléfono">
+                  </div>
+                  <button type="submit" name="btnUpdate" class="btn btn-primary btn-sm mt-2">Actualizar</button>
                 </div>
               </div>
             </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
             <!-- Fin Modal Editar -->
 
             <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#ModalEliminar<?php echo $row['ID_EDITORIAL']; ?>">
@@ -167,10 +178,16 @@ if (isset($_POST['btnDelete'])) {
     ?>
   </tbody>
 </table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
 
 <!-- NUEVO MODAL DE ADMINLTE -->
 <div class="modal fade" id="ModalNuevo">
-  <div class="modal-dialog">
+  <div class="modal-dialog modal-dialog-centered modal-lg"> <!-- Cambio aquí -->
     <div class="modal-content">
       <div class="modal-header">
         <h4 class="modal-title">Agregar Nueva Editorial</h4>
@@ -180,8 +197,8 @@ if (isset($_POST['btnDelete'])) {
       </div>
       <div class="modal-body">
         <form method="post" enctype="multipart/form-data">
-          <div class="row">
-            <div class="col-6">
+          <div class="row justify-content-center">
+            <div class="col-md-12"> <!-- Cambio aquí -->
               <div class="card card-primary">
                 <div class="card-body">
                   <label>Código :</label>
@@ -208,7 +225,6 @@ if (isset($_POST['btnDelete'])) {
                     <input type="text" name="txtTelefonoEditorial" class="form-control" placeholder="Teléfono">
                   </div>
                   <button type="submit" name="btnGrabar" class="btn btn-primary btn-sm mt-2">Guardar</button>
-
                 </div>
               </div>
             </div>
@@ -217,11 +233,10 @@ if (isset($_POST['btnDelete'])) {
       </div>
       <div class="modal-footer justify-content-between">
         <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-        <button type="button" class="btn btn-primary">Guardar cambios</button>
       </div>
     </div>
-    <!-- /.modal-content -->
   </div>
-  <!-- /.modal-dialog -->
 </div>
+
+
 <!-- Fin Modal Nuevo -->

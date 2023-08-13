@@ -19,13 +19,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <!-- Theme style -->
   <link rel="stylesheet" href="dist/css/adminlte.min.css">
 
-  <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
   <!-- DataTables -->
   <link rel="stylesheet" href="plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
   <link rel="stylesheet" href="plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
   <link rel="stylesheet" href="plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
   <!-- Theme style -->
-  <link rel="stylesheet" href="dist/css/adminlte.min.css">
 
 
 </head>
@@ -247,13 +245,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- /.content-wrapper -->
 
     <!-- Control Sidebar -->
-    <aside class="control-sidebar control-sidebar-dark">
-      <!-- Control sidebar content goes here -->
-      <div class="p-3">
-        <h5>Title</h5>
-        <p>Sidebar content</p>
-      </div>
-    </aside>
+    
     <!-- /.control-sidebar -->
 
     <!-- Main Footer -->
@@ -279,11 +271,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <script src="plugins/pdfmake/vfs_fonts.js"></script>
 <script src="plugins/datatables-buttons/js/buttons.html5.min.js"></script>
 <script src="plugins/datatables-buttons/js/buttons.print.min.js"></script>
-<script src="plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+<!-- DataTables -->
+<script src="plugins/sweetalert2/sweetalert2.all.js"></script>
 
 
-
-<script src="plugins/jquery/jquery.min.js"></script>
 
 <!-- AdminLTE App -->
 <script src="dist/js/adminlte.min.js"></script>
@@ -291,41 +282,40 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <script src="dist/js/demo.js"></script>
 <!-- Page specific script -->
 <script>
-  /*=============================================
-Data Table
-=============================================*/
+  $(function () {
+    $("#example1").DataTable({
 
-$(".tablas").DataTable({
+      "language": {
 
-"language": {
+    "sProcessing":     "Procesando...",
+    "sLengthMenu":     "Mostrar _MENU_ registros",
+    "sZeroRecords":    "No se encontraron resultados",
+    "sEmptyTable":     "Ningún dato disponible en esta tabla",
+    "sInfo":           "Mostrando registros del _START_ al _END_ de un total de _TOTAL_",
+    "sInfoEmpty":      "Mostrando registros del 0 al 0 de un total de 0",
+    "sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
+    "sInfoPostFix":    "",
+    "sSearch":         "Buscar:",
+    "sUrl":            "",
+    "sInfoThousands":  ",",
+    "sLoadingRecords": "Cargando...",
+    "oPaginate": {
+    "sFirst":    "Primero",
+    "sLast":     "Último",
+    "sNext":     "Siguiente",
+    "sPrevious": "Anterior"
+    },
+    "oAria": {
+      "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
+      "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+    }
 
-  "sProcessing":     "Procesando...",
-  "sLengthMenu":     "Mostrar _MENU_ registros",
-  "sZeroRecords":    "No se encontraron resultados",
-  "sEmptyTable":     "Ningún dato disponible en esta tabla",
-  "sInfo":           "Mostrando registros del _START_ al _END_ de un total de _TOTAL_",
-  "sInfoEmpty":      "Mostrando registros del 0 al 0 de un total de 0",
-  "sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
-  "sInfoPostFix":    "",
-  "sSearch":         "Buscar:",
-  "sUrl":            "",
-  "sInfoThousands":  ",",
-  "sLoadingRecords": "Cargando...",
-  "oPaginate": {
-  "sFirst":    "Primero",
-  "sLast":     "Último",
-  "sNext":     "Siguiente",
-  "sPrevious": "Anterior"
-  },
-  "oAria": {
-    "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
-    "sSortDescending": ": Activar para ordenar la columna de manera descendente"
   }
-
-}
-
-});
+    });
+  });
 </script>
+
+
 
 </body>
 
