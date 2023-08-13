@@ -23,12 +23,13 @@ DROP TABLE IF EXISTS `tab_autores`;
 CREATE TABLE `tab_autores` (
   `ID_AUTOR` int(11) NOT NULL AUTO_INCREMENT,
   `NOMBRE_AUTOR` varchar(50) DEFAULT NULL,
+  `NACIONALIDAD` varchar(30) DEFAULT NULL,
   PRIMARY KEY (`ID_AUTOR`)
 ) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 /*Data for the table `tab_autores` */
 
-insert  into `tab_autores`(`ID_AUTOR`,`NOMBRE_AUTOR`) values (1,'Juan Pérez'),(2,'María Gómez'),(3,'Carlos Rodríguez');
+insert  into `tab_autores`(`ID_AUTOR`,`NOMBRE_AUTOR`,`NACIONALIDAD`) values (1,'Juan Pérez','Ecuatoriana'),(2,'María Gómez','Peruana'),(3,'Carlos Rodríguez','Americano');
 
 /*Table structure for table `tab_editorial` */
 
@@ -40,11 +41,11 @@ CREATE TABLE `tab_editorial` (
   `DIRECCION` varchar(50) DEFAULT NULL,
   `TELEFONO_EDITORIAL` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`ID_EDITORIAL`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=33336 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 /*Data for the table `tab_editorial` */
 
-insert  into `tab_editorial`(`ID_EDITORIAL`,`NOMBRE_EDITORIAL`,`DIRECCION`,`TELEFONO_EDITORIAL`) values (1,'Editorial ABC','Calle Principal 123','123-456-7890'),(2,'Editorial XYZ','Avenida Central 456','987-654-3210');
+insert  into `tab_editorial`(`ID_EDITORIAL`,`NOMBRE_EDITORIAL`,`DIRECCION`,`TELEFONO_EDITORIAL`) values (1,'Editorial ABC','Calle Principal 123','123-456-7890'),(2,'Editorial XYZaaq','Avenida Central 456','987-654-3210'),(227,'Editorial XYZaaqq','aaeeee','444'),(230,'Editorial diego','aata','099999'),(33335,'Editorial XYZaaxxx','xxx','333');
 
 /*Table structure for table `tab_generos` */
 
@@ -129,6 +130,7 @@ CREATE TABLE `tab_users` (
   `USER_NOMBRE` varchar(30) DEFAULT NULL,
   `USER_ACTIVO` tinyint(1) DEFAULT NULL,
   `USER_CREATE_AT` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `USER_FOTO` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`USER_ID`),
   KEY `FK_REFERENCE_6` (`PER_ID`),
   CONSTRAINT `FK_REFERENCE_6` FOREIGN KEY (`PER_ID`) REFERENCES `tab_perfil` (`PER_ID`)
@@ -136,7 +138,7 @@ CREATE TABLE `tab_users` (
 
 /*Data for the table `tab_users` */
 
-insert  into `tab_users`(`USER_ID`,`PER_ID`,`USER_USUARIO`,`USER_CONTRA`,`USER_NOMBRE`,`USER_ACTIVO`,`USER_CREATE_AT`) values (1,1,'admin','admin','DIEGO CACUANGO',1,'2023-08-11 01:12:30'),(2,2,'pepe','123','ALEX FLORES',1,'2023-08-11 01:12:38');
+insert  into `tab_users`(`USER_ID`,`PER_ID`,`USER_USUARIO`,`USER_CONTRA`,`USER_NOMBRE`,`USER_ACTIVO`,`USER_CREATE_AT`,`USER_FOTO`) values (1,1,'admin','admin','DIEGO CACUANGO',1,'2023-08-11 18:59:59','user.png'),(2,2,'pepe','123','ALEX FLORES',1,'2023-08-11 19:00:08','diegos.png');
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;

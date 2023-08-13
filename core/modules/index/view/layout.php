@@ -1,14 +1,11 @@
 <!DOCTYPE html>
-<!--
-This is a starter template page. Use this page to start your new project from
-scratch. This page gets rid of all links and provides the needed markup only.
--->
+
 <html lang="en">
 
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Mi sistema</title>
+  <title>Mi sistema DieGo | Dev</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -193,7 +190,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
                   <li class="nav-item">
                     <a href="./?view=editorial" class="nav-link">
                       <i class="far fa-circle nav-icon"></i>
-                      <p>editorial</p>
+                      <p>Editorial</p>
+                    </a>
+                  </li>
+                   <li class="nav-item">
+                    <a href="./?view=autores/" class="nav-link">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Autores</p>
                     </a>
                   </li>
                 </ul>
@@ -275,7 +278,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <script src="plugins/datatables-buttons/js/buttons.html5.min.js"></script>
 <script src="plugins/datatables-buttons/js/buttons.print.min.js"></script>
 <!-- DataTables -->
-<script src="plugins/sweetalert2/sweetalert2.all.js"></script>
 
 
 
