@@ -8,17 +8,48 @@ if (isset($_POST['btnGrabar'])) {
   $direccion = $_POST['txtDireccion'];
   $telefono_editorial = $_POST['txtTelefonoEditorial'];
 
+  if (isset($_POST['btnGrabar'])) {
+  $editorial_id = $_POST['txtCodigo'];
+  $nombre_editorial = $_POST['txtNombreEditorial'];
+  $direccion = $_POST['txtDireccion'];
+  $telefono_editorial = $_POST['txtTelefonoEditorial'];
+
   if (EditorialData::insertEditorial(
     $editorial_id,
     $nombre_editorial,
     $direccion,
     $telefono_editorial
   ) == true) {
-    echo "DATOS DE LA EDITORIAL GRABADOS CORRECTAMENTE";
+    echo '<script>
+      Swal.fire({
+        title: "¡Éxito!",
+        text: "Datos de la editorial grabados correctamente",
+        icon: "success",
+        confirmButtonText: "Cerrar"
+      }).then(function(result) {
+        if (result.value) {
+          window.location = "?view=editorial"; // Cambiar a la ruta deseada
+        }
+      });
+    </script>';
   } else {
-    echo "**** NO SE PUDO GRABAR, REVISE LOS DATOS O EL CÓDIGO ****";
+    echo '<script>
+      Swal.fire({
+        title: "¡Error!",
+        text: "No se pudo grabar, revise los datos o el código",
+        icon: "error",
+        confirmButtonText: "Cerrar"
+      }).then(function(result) {
+        if (result.value) {
+          window.location = "?view=editorial"; // Cambiar a la ruta deseada
+        }
+      });
+    </script>';
   }
 }
+
+}
+
 
 if (isset($_POST['btnUpdate'])) {
   $editorial_id = $_POST['txtCodigo'];
@@ -32,16 +63,55 @@ if (isset($_POST['btnUpdate'])) {
     $direccion,
     $telefono_editorial
   ) == true) {
-    echo "DATOS DE LA EDITORIAL ACTUALIZADOS CORRECTAMENTE";
+    echo '<script>
+      Swal.fire({
+        title: "¡Éxito!",
+        text: "Datos de la editorial actualizados correctamente",
+        icon: "success",
+        confirmButtonText: "Cerrar"
+      }).then(function(result) {
+        if (result.value) {
+          window.location = "?view=editorial"; // Cambiar a la dirección correcta
+        }
+      });
+    </script>';
   } else {
-    echo "**** NO SE PUDO ACTUALIZAR, REVISE LOS DATOS O EL CÓDIGO ****";
+    echo '<script>
+      Swal.fire({
+        title: "¡Error!",
+        text: "No se pudo actualizar, revise los datos o el código",
+        icon: "error",
+        confirmButtonText: "Cerrar"
+      }).then(function(result) {
+        if (result.value) {
+          window.location = "?view=editorial"; // Cambiar a la dirección correcta
+        }
+      });
+    </script>';
   }
 }
+
+
 
 if (isset($_POST['btnDelete'])) {
   $editorial_id = $_POST['txtEditorialId'];
   EditorialData::deleteEditorial($editorial_id);
+  
+  echo '<script>
+    Swal.fire({
+      title: "¡Eliminado!",
+      text: "Editorial eliminada correctamente",
+      icon: "success",
+      confirmButtonText: "Cerrar"
+    }).then(function(result) {
+      if (result.value) {
+        window.location = "?view=editorial"; // Recargar la página actual
+      }
+    });
+  </script>';
 }
+
+
 
 ?>
 
