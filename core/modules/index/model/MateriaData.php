@@ -91,5 +91,28 @@ class MateriaData {
     }
   }
 
+
+  public static function getNombreMateriaById($materia_id)
+{
+  try {
+    $sql = "SELECT NOMBRE_MATERIA FROM tab_materias
+            WHERE ID_MATERIAS=:pmateria_id";
+    $conexion = Database::getCon();
+    $stmt = $conexion->prepare($sql);
+    $stmt->bindparam(":pmateria_id", $materia_id);
+    $stmt->execute();
+    if ($stmt->rowCount() > 0) {
+      $registro = $stmt->fetch(PDO::FETCH_ASSOC);
+      return $registro['NOMBRE_MATERIA'];
+    } else {
+      return null;
+    }
+  } catch (PDOException $e) {
+    echo $e->getMessage();
+    return null;
+  }
+}
+
+
 }
  ?>

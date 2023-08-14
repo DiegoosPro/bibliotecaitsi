@@ -103,5 +103,28 @@ class EditorialData {
     }
   }
 
+
+  public static function getNombreEditorialById($editorial_id)
+{
+  try {
+    $sql = "SELECT NOMBRE_EDITORIAL FROM tab_editorial
+            WHERE ID_EDITORIAL=:peditorial_id";
+    $conexion = Database::getCon();
+    $stmt = $conexion->prepare($sql);
+    $stmt->bindparam(":peditorial_id", $editorial_id);
+    $stmt->execute();
+    if ($stmt->rowCount() > 0) {
+      $registro = $stmt->fetch(PDO::FETCH_ASSOC);
+      return $registro['NOMBRE_EDITORIAL'];
+    } else {
+      return null;
+    }
+  } catch (PDOException $e) {
+    echo $e->getMessage();
+    return null;
+  }
+}
+
+
 }
  ?>

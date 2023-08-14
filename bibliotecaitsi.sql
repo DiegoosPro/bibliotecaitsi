@@ -25,11 +25,11 @@ CREATE TABLE `tab_autores` (
   `NOMBRE_AUTOR` varchar(50) DEFAULT NULL,
   `NACIONALIDAD` varchar(30) DEFAULT NULL,
   PRIMARY KEY (`ID_AUTOR`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 /*Data for the table `tab_autores` */
 
-insert  into `tab_autores`(`ID_AUTOR`,`NOMBRE_AUTOR`,`NACIONALIDAD`) values (1,'Juan Pérez','Ecuatoriana'),(2,'María Gómez','Peruana'),(3,'Carlos Rodríguez','Americano');
+insert  into `tab_autores`(`ID_AUTOR`,`NOMBRE_AUTOR`,`NACIONALIDAD`) values (1,'Juan Pérez','Ecuatoriana'),(2,'María Gómez','Peruanaa'),(3,'Carlos Rodríguezzzz','Americanossszz'),(20,'rr','rr');
 
 /*Table structure for table `tab_editorial` */
 
@@ -41,11 +41,11 @@ CREATE TABLE `tab_editorial` (
   `DIRECCION` varchar(50) DEFAULT NULL,
   `TELEFONO_EDITORIAL` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`ID_EDITORIAL`)
-) ENGINE=InnoDB AUTO_INCREMENT=33336 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=33337 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 /*Data for the table `tab_editorial` */
 
-insert  into `tab_editorial`(`ID_EDITORIAL`,`NOMBRE_EDITORIAL`,`DIRECCION`,`TELEFONO_EDITORIAL`) values (1,'Editorial ABC','Calle Principal 123','123-456-7890'),(2,'Editorial XYZaaq','Avenida Central 456','987-654-3210'),(227,'Editorial XYZaaqq','aaeeee','444'),(230,'Editorial diego','aata','099999'),(33335,'Editorial XYZaaxxx','xxx','333');
+insert  into `tab_editorial`(`ID_EDITORIAL`,`NOMBRE_EDITORIAL`,`DIRECCION`,`TELEFONO_EDITORIAL`) values (1,'Editorial ABC','Calle Principal 123','123-456-7890'),(2,'Editorial XYZaaq','Avenida Central 456','987-654-3210'),(4,'a','a','1'),(227,'Editorial XYZaaqq','aaeeee','4442');
 
 /*Table structure for table `tab_generos` */
 
@@ -84,11 +84,11 @@ CREATE TABLE `tab_libros` (
   CONSTRAINT `FK_REFERENCE_2` FOREIGN KEY (`ID_GENERO`) REFERENCES `tab_generos` (`ID_GENERO`),
   CONSTRAINT `FK_REFERENCE_3` FOREIGN KEY (`ID_MATERIAS`) REFERENCES `tab_materias` (`ID_MATERIAS`),
   CONSTRAINT `FK_REFERENCE_4` FOREIGN KEY (`ID_AUTOR`) REFERENCES `tab_autores` (`ID_AUTOR`)
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 /*Data for the table `tab_libros` */
 
-insert  into `tab_libros`(`ID_LIBRO`,`ID_EDITORIAL`,`ID_GENERO`,`ID_MATERIAS`,`ID_AUTOR`,`TITULO`,`ANIO_PUBLICACION`,`DISPONIBILIDAD`,`IMAGEN`) values (16,1,1,1,1,'Desarrollo Ágil de Software','2020-01-01',1,'agile.jpg'),(17,2,2,2,2,'Viaje a las Estrellas','2018-05-15',1,'star_trek.jpg'),(18,1,3,3,3,'Introducción a la Inteligencia Artificial','2019-09-20',1,'ai_intro.jpg');
+insert  into `tab_libros`(`ID_LIBRO`,`ID_EDITORIAL`,`ID_GENERO`,`ID_MATERIAS`,`ID_AUTOR`,`TITULO`,`ANIO_PUBLICACION`,`DISPONIBILIDAD`,`IMAGEN`) values (1,1,1,2,1,'Desarrollo Ágil de Software','2020-01-01',1,'sinimagen.jpeg'),(2,2,NULL,2,1,'Viaje a las Estrellas','2020-01-01',1,'tecno.jpg'),(3,2,1,1,3,'Introducción a la Inteligencia Artificial','2019-09-20',1,'ia.jpg');
 
 /*Table structure for table `tab_materias` */
 
@@ -98,11 +98,11 @@ CREATE TABLE `tab_materias` (
   `ID_MATERIAS` int(11) NOT NULL AUTO_INCREMENT,
   `NOMBRE_MATERIA` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`ID_MATERIAS`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 /*Data for the table `tab_materias` */
 
-insert  into `tab_materias`(`ID_MATERIAS`,`NOMBRE_MATERIA`) values (1,'Ingeniería de Software'),(2,'Bases de Datos'),(3,'Inteligencia Artificial');
+insert  into `tab_materias`(`ID_MATERIAS`,`NOMBRE_MATERIA`) values (1,'Ingeniería de Software'),(2,'Bases de Datos'),(3,'Inteligencia Artificial'),(4,'zzsssxx'),(5,'vvvv');
 
 /*Table structure for table `tab_perfil` */
 

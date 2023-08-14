@@ -96,6 +96,30 @@ class AutorData {
     }
   }
 
+
+public static function getNombreAutorById($autor_id)
+{
+  try {
+    $sql = "SELECT NOMBRE_AUTOR FROM tab_autores
+            WHERE ID_AUTOR=:pautor_id";
+    $conexion = Database::getCon();
+    $stmt = $conexion->prepare($sql);
+    $stmt->bindparam(":pautor_id", $autor_id);
+    $stmt->execute();
+    if ($stmt->rowCount() > 0) {
+      $registro = $stmt->fetch(PDO::FETCH_ASSOC);
+      return $registro['NOMBRE_AUTOR'];
+    } else {
+      return null;
+    }
+  } catch (PDOException $e) {
+    echo $e->getMessage();
+    return null;
+  }
+}
+
+  
+
 }
 
 
