@@ -1,11 +1,12 @@
-<?php 
+<?php
 class AutorData {
 
   public static function getAllAutores()
   {
     try {
-      $sql = "SELECT * FROM tab_autores 
-              ORDER BY NOMBRE_AUTOR";
+      $sql = "SELECT a.*, p.pais_nombre FROM tab_autores a
+              INNER JOIN tab_paises p ON a.pais_id = p.paies_id
+              ORDER BY a.NOMBRE_AUTOR";
       $conexion = Database::getCon();
       $stmt = $conexion->prepare($sql);
       $stmt->execute();
@@ -24,11 +25,12 @@ class AutorData {
   public static function getAutorById($autor_id)
   {
     try {
-      $sql = "SELECT * FROM tab_autores
-              WHERE ID_AUTOR = :pautor_id";
+      $sql = "SELECT a.*, p.pais_nombre FROM tab_autores a
+              INNER JOIN tab_paises p ON a.pais_id = p.paies_id
+              WHERE a.ID_AUTOR = :pautor_id";
       $conexion = Database::getCon();
       $stmt = $conexion->prepare($sql);
-      $stmt->bindparam(":pautor_id", $autor_id);
+      $stmt->bindValue(":pautor_id", $autor_id, PDO::PARAM_INT);
       $stmt->execute();
       if ($stmt->rowCount() > 0) {
         $registro = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -44,15 +46,15 @@ class AutorData {
 
   public static function insertAutor(
       $nombre_autor,
-      $nacionalidad
+      $pais_id
     ) {
       try {
-        $sql = "INSERT INTO tab_autores (NOMBRE_AUTOR, NACIONALIDAD)
-        VALUES(:pnombre_autor, :pnacionalidad)";
+        $sql = "INSERT INTO tab_autores (NOMBRE_AUTOR, pais_id)
+        VALUES(:pnombre_autor, :ppais_id)";
         $conexion = Database::getCon();
         $stmt = $conexion->prepare($sql);
-        $stmt->bindparam(":pnombre_autor", $nombre_autor);
-        $stmt->bindparam(":pnacionalidad", $nacionalidad);
+        $stmt->bindValue(":pnombre_autor", $nombre_autor, PDO::PARAM_STR);
+        $stmt->bindValue(":ppais_id", $pais_id, PDO::PARAM_INT);
         $stmt->execute();
         return true;
       } catch (PDOException $e) {
@@ -64,18 +66,18 @@ class AutorData {
   public static function updateAutor(
       $autor_id,
       $nombre_autor,
-      $nacionalidad
+      $pais_id
     ) {
       try {
         $sql = "UPDATE tab_autores SET 
                NOMBRE_AUTOR=:pnombre_autor,
-               NACIONALIDAD=:pnacionalidad
+               pais_id=:ppais_id
                WHERE ID_AUTOR=:pautor_id";
         $conexion = Database::getCon();
         $stmt = $conexion->prepare($sql);
-        $stmt->bindparam(":pautor_id", $autor_id);
-        $stmt->bindparam(":pnombre_autor", $nombre_autor);
-        $stmt->bindparam(":pnacionalidad", $nacionalidad);
+        $stmt->bindValue(":pautor_id", $autor_id, PDO::PARAM_INT);
+        $stmt->bindValue(":pnombre_autor", $nombre_autor, PDO::PARAM_STR);
+        $stmt->bindValue(":ppais_id", $pais_id, PDO::PARAM_INT);
         $stmt->execute();
         return true;
       } catch (PDOException $e) {
@@ -89,38 +91,32 @@ class AutorData {
       $sql ="DELETE FROM tab_autores WHERE ID_AUTOR=:pautor_id";
       $conexion = Database::getCon();
       $stmt = $conexion->prepare($sql);
-      $stmt->bindparam(":pautor_id", $autor_id);
+      $stmt->bindValue(":pautor_id", $autor_id, PDO::PARAM_INT);
       $stmt->execute();
     } catch (PDOException $e) {
       echo $e->getMessage();
     }
   }
 
-
-public static function getNombreAutorById($autor_id)
-{
-  try {
-    $sql = "SELECT NOMBRE_AUTOR FROM tab_autores
-            WHERE ID_AUTOR=:pautor_id";
-    $conexion = Database::getCon();
-    $stmt = $conexion->prepare($sql);
-    $stmt->bindparam(":pautor_id", $autor_id);
-    $stmt->execute();
-    if ($stmt->rowCount() > 0) {
-      $registro = $stmt->fetch(PDO::FETCH_ASSOC);
-      return $registro['NOMBRE_AUTOR'];
-    } else {
+  public static function getNombreAutorById($autor_id)
+  {
+    try {
+      $sql = "SELECT NOMBRE_AUTOR FROM tab_autores
+              WHERE ID_AUTOR=:pautor_id";
+      $conexion = Database::getCon();
+      $stmt = $conexion->prepare($sql);
+      $stmt->bindValue(":pautor_id", $autor_id, PDO::PARAM_INT);
+      $stmt->execute();
+      if ($stmt->rowCount() > 0) {
+        $registro = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $registro['NOMBRE_AUTOR'];
+      } else {
+        return null;
+      }
+    } catch (PDOException $e) {
+      echo $e->getMessage();
       return null;
     }
-  } catch (PDOException $e) {
-    echo $e->getMessage();
-    return null;
   }
 }
-
-  
-
-}
-
-
- ?>
+?>

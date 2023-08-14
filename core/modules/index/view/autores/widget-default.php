@@ -4,11 +4,11 @@ $datos = AutorData::getAllAutores();
 
 if (isset($_POST['btnGrabar'])) {
   $nombre_autor = $_POST['txtNombreAutor'];
-  $nacionalidad = $_POST['txtNacionalidad'];
+  $pais_id = $_POST['CboPais'];
 
   if (AutorData::insertAutor(
     $nombre_autor,
-    $nacionalidad
+    $pais_id
   )) {
     echo '<script>
       Swal.fire({
@@ -41,12 +41,12 @@ if (isset($_POST['btnGrabar'])) {
 if (isset($_POST['btnUpdate'])) {
   $autor_id = $_POST['txtCodigo'];
   $nombre_autor = $_POST['txtNombreAutor'];
-  $nacionalidad = $_POST['txtNacionalidad'];
+  $pais_id = $_POST['CboPais'];
 
   if (AutorData::updateAutor(
     $autor_id,
     $nombre_autor,
-    $nacionalidad
+    $pais_id
   )) {
     echo '<script>
       Swal.fire({
@@ -94,8 +94,8 @@ if (isset($_POST['btnDelete'])) {
   </script>';
 }
 
-
 ?>
+
 
 <!-- Botón para agregar nueva materia -->
 <!-- Button trigger modal -->
@@ -132,7 +132,7 @@ if (isset($_POST['btnDelete'])) {
                     <tr>
                       <th scope="row"><?php echo $row['ID_AUTOR']; ?></th>
                       <td><?php echo $row['NOMBRE_AUTOR']; ?></td>
-                      <td><?php echo $row['NACIONALIDAD']; ?></td>
+                      <td><?php echo $row['pais_nombre']; ?></td>
                       <td>
                         <a href="#" class="btn btn-sm btn-info">Ver</a>
 
@@ -166,16 +166,35 @@ if (isset($_POST['btnDelete'])) {
                                             <span class="input-group-text" id="basic-addon1">@</span>
                                             <input type="text" name="txtCodigo" id="txtCodigoId" value="<?php echo $datosAutor['ID_AUTOR']; ?>" readonly class="form-control" placeholder="Código">
                                           </div>
-                                          <label>Nombre Autor :</label>
+
+                                          <label>Nombre :</label>
                                           <div class="input-group mb-3">
                                             <span class="input-group-text" id="basic-addon1">@</span>
-                                            <input type="text" name="txtNombreAutor" value="<?php echo $datosAutor['NOMBRE_AUTOR']; ?>" class="form-control" placeholder="Nombre Autor">
+                                            <input type="text" name="txtNombreAutor" value="<?php echo $datosAutor['NOMBRE_AUTOR']; ?>" readonly class="form-control" placeholder="Código">
                                           </div>
-                                          <label>Nacionalidad :</label>
-                                          <div class="input-group mb-3">
-                                            <span class="input-group-text" id="basic-addon1">@</span>
-                                            <input type="text" name="txtNacionalidad" value="<?php echo $datosAutor['NACIONALIDAD']; ?>" class="form-control" placeholder="Nacionalidad">
-                                          </div>
+                                          <?php
+                                    $paises = PaisData::getAllPaises();
+                                    ?>
+                                      <label>País : </label>
+                                    <div class="input-group mb-3">
+                                      <select class="form-select" name="cboPais" required>
+                                        <option value="<?php echo $datosAutor['pais_id']; ?>"><?php echo PaisData::getNombrePaisById($datosAutor['pais_id']); ?></option>
+                                        <?php
+                                        if ($paises != null) {
+                                          foreach ($paises as $indice => $rowp) {
+                                            if ($datosAutor['pais_id'] != $rowp['pais_id']) {
+                                        ?>
+                                              <option value="<?php echo $rowp['pais_id']; ?>"><?php echo $rowp['pais_nombre']; ?></option>
+                                        <?php
+                                            }
+                                          }
+                                        }
+                                        ?>
+                                      </select>
+                                    </div>
+
+                                          
+
                                           <button type="submit" name="btnUpdate" class="btn btn-primary btn-sm mt-2">Actualizar</button>
                                         </div>
                                       </div>
