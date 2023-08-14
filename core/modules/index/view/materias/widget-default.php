@@ -1,24 +1,22 @@
 <?php
 
-$datos = AutorData::getAllAutores();
+$datos = MateriaData::getAllMaterias();
 
 if (isset($_POST['btnGrabar'])) {
-  $nombre_autor = $_POST['txtNombreAutor'];
-  $nacionalidad = $_POST['txtNacionalidad'];
+  $nombre_materia = $_POST['txtNombreMateria'];
 
-  if (AutorData::insertAutor(
-    $nombre_autor,
-    $nacionalidad
+  if (MateriaData::insertMateria(
+    $nombre_materia
   )) {
     echo '<script>
       Swal.fire({
         title: "¡Éxito!",
-        text: "Datos del autor grabados correctamente",
+        text: "Datos de la materia grabados correctamente",
         icon: "success",
         confirmButtonText: "Cerrar"
       }).then(function(result) {
         if (result.value) {
-          window.location = "?view=autores"; // Cambiar a la ruta deseada
+          window.location = "?view=materias"; // Cambiar a la ruta deseada
         }
       });
     </script>';
@@ -31,7 +29,7 @@ if (isset($_POST['btnGrabar'])) {
         confirmButtonText: "Cerrar"
       }).then(function(result) {
         if (result.value) {
-          window.location = "?view=autores"; // Cambiar a la ruta deseada
+          window.location = "?view=materias"; // Cambiar a la ruta deseada
         }
       });
     </script>';
@@ -39,24 +37,22 @@ if (isset($_POST['btnGrabar'])) {
 }
 
 if (isset($_POST['btnUpdate'])) {
-  $autor_id = $_POST['txtCodigo'];
-  $nombre_autor = $_POST['txtNombreAutor'];
-  $nacionalidad = $_POST['txtNacionalidad'];
+  $materia_id = $_POST['txtCodigo'];
+  $nombre_materia = $_POST['txtNombreMateria'];
 
-  if (AutorData::updateAutor(
-    $autor_id,
-    $nombre_autor,
-    $nacionalidad
+  if (MateriaData::updateMateria(
+    $materia_id,
+    $nombre_materia
   )) {
     echo '<script>
       Swal.fire({
         title: "¡Éxito!",
-        text: "Datos del autor actualizados correctamente",
+        text: "Datos de la materia actualizados correctamente",
         icon: "success",
         confirmButtonText: "Cerrar"
       }).then(function(result) {
         if (result.value) {
-          window.location = "?view=autores"; // Cambiar a la dirección correcta
+          window.location = "?view=materias"; // Cambiar a la dirección correcta
         }
       });
     </script>';
@@ -69,7 +65,7 @@ if (isset($_POST['btnUpdate'])) {
         confirmButtonText: "Cerrar"
       }).then(function(result) {
         if (result.value) {
-          window.location = "?view=autores"; // Cambiar a la dirección correcta
+          window.location = "?view=materias"; // Cambiar a la dirección correcta
         }
       });
     </script>';
@@ -77,30 +73,30 @@ if (isset($_POST['btnUpdate'])) {
 }
 
 if (isset($_POST['btnDelete'])) {
-  $autor_id = $_POST['txtAutorId'];
-  AutorData::deleteAutor($autor_id);
+  $materia_id = $_POST['txtMateriaId'];
+  MateriaData::deleteMateria($materia_id);
   
   echo '<script>
     Swal.fire({
       title: "¡Eliminado!",
-      text: "Autor eliminado correctamente",
+      text: "Materia eliminada correctamente",
       icon: "success",
       confirmButtonText: "Cerrar"
     }).then(function(result) {
       if (result.value) {
-        window.location = "?view=autores"; // Recargar la página actual
+        window.location = "?view=materias"; // Recargar la página actual
       }
     });
   </script>';
 }
 
-
 ?>
 
-<!-- Botón para agregar nueva materia -->
+
 <!-- Button trigger modal -->
+<!-- Botón para agregar nueva materia -->
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ModalNuevo">
-    Agregar Nueva Editorial
+    Agregar Nueva Materia
 </button>
 
 <br>
@@ -111,7 +107,7 @@ if (isset($_POST['btnDelete'])) {
       <div class="col-12">
         <div class="card">
           <div class="card-header">
-            <h3 class="card-title">PAGINA AUTORES</h3>
+            <h3 class="card-title">PAGINA MATERIAS</h3>
           </div>
           <!-- /.card-header -->
           <div class="card-body">
@@ -119,8 +115,7 @@ if (isset($_POST['btnDelete'])) {
               <thead>
                 <tr>
                   <th scope="col">ID</th>
-                  <th scope="col">Nombre Autor</th>
-                  <th scope="col">Nacionalidad</th>
+                  <th scope="col">Nombre Materia</th>
                   <th scope="col">Acciones</th>
                 </tr>
               </thead>
@@ -130,20 +125,19 @@ if (isset($_POST['btnDelete'])) {
                   foreach ($datos as $indice => $row) {
                     ?>
                     <tr>
-                      <th scope="row"><?php echo $row['ID_AUTOR']; ?></th>
-                      <td><?php echo $row['NOMBRE_AUTOR']; ?></td>
-                      <td><?php echo $row['NACIONALIDAD']; ?></td>
+                      <th scope="row"><?php echo $row['ID_MATERIAS']; ?></th>
+                      <td><?php echo $row['NOMBRE_MATERIA']; ?></td>
                       <td>
                         <a href="#" class="btn btn-sm btn-info">Ver</a>
 
                         <!-- Modal Editar -->
-                        <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#ModalEditar<?php echo $row['ID_AUTOR']; ?>">
+                        <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#ModalEditar<?php echo $row['ID_MATERIAS']; ?>">
                           Editar
                         </button>
                         <!-- Fin Modal Editar -->
 
                         <!-- Modal  EDITAR-->
-                        <div class="modal fade" id="ModalEditar<?php echo $row['ID_AUTOR']; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal fade" id="ModalEditar<?php echo $row['ID_MATERIAS']; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                           <div class="modal-dialog modal-dialog-centered modal-lg">
                             <div class="modal-content">
                               <div class="modal-header">
@@ -154,27 +148,22 @@ if (isset($_POST['btnDelete'])) {
                               </div>
                               <div class="modal-body">
                                 <?php
-                                $datosAutor = AutorData::getAutorById($row['ID_AUTOR']);
+                                $datosMateria = MateriaData::getMateriaById($row['ID_MATERIAS']);
                                 ?>
                                 <form method="post" enctype="multipart/form-data">
                                   <div class="row">
                                     <div class="col-md-12">
                                       <div class="card card-primary">
                                         <div class="card-body">
-                                          <label>Código :</label>
+                                          <label>ID :</label>
                                           <div class="input-group mb-3">
                                             <span class="input-group-text" id="basic-addon1">@</span>
-                                            <input type="text" name="txtCodigo" id="txtCodigoId" value="<?php echo $datosAutor['ID_AUTOR']; ?>" readonly class="form-control" placeholder="Código">
+                                            <input type="text" name="txtCodigo" id="txtCodigoId" value="<?php echo $datosMateria['ID_MATERIAS']; ?>" readonly class="form-control" placeholder="ID">
                                           </div>
-                                          <label>Nombre Autor :</label>
+                                          <label>Nombre Materia :</label>
                                           <div class="input-group mb-3">
                                             <span class="input-group-text" id="basic-addon1">@</span>
-                                            <input type="text" name="txtNombreAutor" value="<?php echo $datosAutor['NOMBRE_AUTOR']; ?>" class="form-control" placeholder="Nombre Autor">
-                                          </div>
-                                          <label>Nacionalidad :</label>
-                                          <div class="input-group mb-3">
-                                            <span class="input-group-text" id="basic-addon1">@</span>
-                                            <input type="text" name="txtNacionalidad" value="<?php echo $datosAutor['NACIONALIDAD']; ?>" class="form-control" placeholder="Nacionalidad">
+                                            <input type="text" name="txtNombreMateria" value="<?php echo $datosMateria['NOMBRE_MATERIA']; ?>" class="form-control" placeholder="Nombre Materia">
                                           </div>
                                           <button type="submit" name="btnUpdate" class="btn btn-primary btn-sm mt-2">Actualizar</button>
                                         </div>
@@ -189,14 +178,14 @@ if (isset($_POST['btnDelete'])) {
                         <!-- Fin Modal EDITAR -->
 
                         <!-- Modal Eliminar -->
-                        <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#ModalEliminar<?php echo $row['ID_AUTOR']; ?>">
+                        <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#ModalEliminar<?php echo $row['ID_MATERIAS']; ?>">
                           Eliminar
                         </button>
-                        <div class="modal fade" id="ModalEliminar<?php echo $row['ID_AUTOR']; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal fade" id="ModalEliminar<?php echo $row['ID_MATERIAS']; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                           <div class="modal-dialog">
                             <div class="modal-content">
                               <div class="modal-header">
-                                <h4 class="modal-title">Eliminar Autor</h4>
+                                <h4 class="modal-title">Eliminar Materia</h4>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                   <span aria-hidden="true">&times;</span>
                                 </button>
@@ -204,7 +193,7 @@ if (isset($_POST['btnDelete'])) {
                               <div class="modal-body">
                                 <form method="post">
                                   <h4>¿Está seguro?</h4>
-                                  <input type="hidden" name="txtAutorId" value="<?php echo $row['ID_AUTOR']; ?>">
+                                  <input type="hidden" name="txtMateriaId" value="<?php echo $row['ID_MATERIAS']; ?>">
                                   <button type="submit" name="btnDelete" class="btn btn-Danger btn-sm mt-2">Eliminar</button>
                                 </form>
                               </div>
@@ -229,6 +218,7 @@ if (isset($_POST['btnDelete'])) {
 </section>
 
 
+
             
 
 <!-- NUEVO MODAL DE ADMINLTE -->
@@ -236,7 +226,7 @@ if (isset($_POST['btnDelete'])) {
   <div class="modal-dialog modal-dialog-centered modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title">Agregar Nuevo Autor</h4>
+        <h4 class="modal-title">Agregar Nueva Materia</h4>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -247,16 +237,10 @@ if (isset($_POST['btnDelete'])) {
             <div class="col-md-12">
               <div class="card card-primary">
                 <div class="card-body">
-                  <label>Nombre Autor :</label>
+                  <label>Nombre Materia:</label>
                   <div class="input-group mb-3">
                     <span class="input-group-text" id="basic-addon1">@</span>
-                    <input type="text" name="txtNombreAutor" class="form-control" placeholder="Nombre Autor">
-                  </div>
-
-                  <label>Nacionalidad :</label>
-                  <div class="input-group mb-3">
-                    <span class="input-group-text" id="basic-addon1">@</span>
-                    <input type="text" name="txtNacionalidad" class="form-control" placeholder="Nacionalidad">
+                    <input type="text" name="txtNombreMateria" class="form-control" placeholder="Nombre Materia">
                   </div>
 
                   <button type="submit" name="btnGrabar" class="btn btn-primary btn-sm mt-2">Guardar</button>
