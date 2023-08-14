@@ -29,7 +29,7 @@ CREATE TABLE `tab_autores` (
 
 /*Data for the table `tab_autores` */
 
-insert  into `tab_autores`(`ID_AUTOR`,`NOMBRE_AUTOR`,`pais_id`) values (1,'Juan Pérez',1),(2,'María Gómez',2),(3,'Carlos Rodríguezzzz',3),(20,'rr',1),(21,'diegoeditado',2);
+insert  into `tab_autores`(`ID_AUTOR`,`NOMBRE_AUTOR`,`pais_id`) values (1,'ee',1),(2,'María Gómez',2),(3,'Carlos Rodríguezzzz',3),(20,'EE',1),(21,'diegoeditado',2);
 
 /*Table structure for table `tab_editorial` */
 
@@ -109,17 +109,17 @@ insert  into `tab_materias`(`ID_MATERIAS`,`NOMBRE_MATERIA`) values (1,'Ingenier�
 DROP TABLE IF EXISTS `tab_paises`;
 
 CREATE TABLE `tab_paises` (
-  `paies_id` int(11) NOT NULL AUTO_INCREMENT,
+  `pais_id` int(11) NOT NULL AUTO_INCREMENT,
   `pais_nombre` varchar(50) DEFAULT NULL,
   `pais_gentilicio` varchar(50) DEFAULT NULL,
   `pais_activo` tinyint(1) DEFAULT NULL,
-  PRIMARY KEY (`paies_id`),
-  CONSTRAINT `tab_paises_ibfk_1` FOREIGN KEY (`paies_id`) REFERENCES `tab_autores` (`ID_AUTOR`) ON DELETE CASCADE ON UPDATE CASCADE
+  PRIMARY KEY (`pais_id`),
+  CONSTRAINT `tab_paises_ibfk_1` FOREIGN KEY (`pais_id`) REFERENCES `tab_autores` (`ID_AUTOR`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `tab_paises` */
 
-insert  into `tab_paises`(`paies_id`,`pais_nombre`,`pais_gentilicio`,`pais_activo`) values (1,'Colombia','Colombiana',1),(2,'Ecuador','Ecuatoriana',1),(3,'Chile','Chilena',1);
+insert  into `tab_paises`(`pais_id`,`pais_nombre`,`pais_gentilicio`,`pais_activo`) values (1,'Colombia','Colombiana',1),(2,'Ecuador','Ecuatoriana',1),(3,'Chile','Chilena',1);
 
 /*Table structure for table `tab_perfil` */
 
