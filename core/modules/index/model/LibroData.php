@@ -1,5 +1,4 @@
 <?php 
-
 class LibroData
 {
     public static function getAllLibros()
@@ -129,7 +128,6 @@ class LibroData
         }
     }
 }
-
 
 
 

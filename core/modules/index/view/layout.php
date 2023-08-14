@@ -182,9 +182,9 @@
                 </a>
                 <ul class="nav nav-treeview">
                   <li class="nav-item">
-                    <a href="./?view=productos" class="nav-link">
+                    <a href="./?view=libros" class="nav-link">
                       <i class="far fa-circle nav-icon"></i>
-                      <p>Productos</p>
+                      <p>Libros</p>
                     </a>
                   </li>
                   <li class="nav-item">
