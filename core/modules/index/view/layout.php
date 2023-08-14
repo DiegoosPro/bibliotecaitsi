@@ -194,7 +194,7 @@
                     </a>
                   </li>
                    <li class="nav-item">
-                    <a href="./?view=autores/" class="nav-link">
+                    <a href="./?view=autores" class="nav-link">
                       <i class="far fa-circle nav-icon"></i>
                       <p>Autores</p>
                     </a>

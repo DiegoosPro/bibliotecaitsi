@@ -18,7 +18,7 @@ if (isset($_POST['btnGrabar'])) {
         confirmButtonText: "Cerrar"
       }).then(function(result) {
         if (result.value) {
-          window.location = "/?view=autores"; // Cambiar a la ruta deseada
+          window.location = "?view=autores"; // Cambiar a la ruta deseada
         }
       });
     </script>';
@@ -31,7 +31,7 @@ if (isset($_POST['btnGrabar'])) {
         confirmButtonText: "Cerrar"
       }).then(function(result) {
         if (result.value) {
-          window.location = "/?view=autores"; // Cambiar a la ruta deseada
+          window.location = "?view=autores"; // Cambiar a la ruta deseada
         }
       });
     </script>';
@@ -56,7 +56,7 @@ if (isset($_POST['btnUpdate'])) {
         confirmButtonText: "Cerrar"
       }).then(function(result) {
         if (result.value) {
-          window.location = "/?view=autores"; // Cambiar a la dirección correcta
+          window.location = "?view=autores"; // Cambiar a la dirección correcta
         }
       });
     </script>';
@@ -69,7 +69,7 @@ if (isset($_POST['btnUpdate'])) {
         confirmButtonText: "Cerrar"
       }).then(function(result) {
         if (result.value) {
-          window.location = "/?view=autores"; // Cambiar a la dirección correcta
+          window.location = "?view=autores"; // Cambiar a la dirección correcta
         }
       });
     </script>';
@@ -232,10 +232,10 @@ if (isset($_POST['btnDelete'])) {
 
 <!-- NUEVO MODAL DE ADMINLTE -->
 <div class="modal fade" id="ModalNuevo">
-  <div class="modal-dialog modal-dialog-centered modal-lg"> <!-- Cambio aquí -->
+  <div class="modal-dialog modal-dialog-centered modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title">Agregar Nueva Editorial</h4>
+        <h4 class="modal-title">Agregar Nuevo Autor</h4>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -243,7 +243,7 @@ if (isset($_POST['btnDelete'])) {
       <div class="modal-body">
         <form method="post" enctype="multipart/form-data">
           <div class="row justify-content-center">
-            <div class="col-md-12"> <!-- Cambio aquí -->
+            <div class="col-md-12">
               <div class="card card-primary">
                 <div class="card-body">
                   <label>Código :</label>
@@ -252,23 +252,18 @@ if (isset($_POST['btnDelete'])) {
                     <input type="text" name="txtCodigo" id="txtCodigoId" class="form-control" placeholder="Código">
                   </div>
 
-                  <label>Nombre Editorial :</label>
+                  <label>Nombre Autor :</label>
                   <div class="input-group mb-3">
                     <span class="input-group-text" id="basic-addon1">@</span>
-                    <input type="text" name="txtNombreEditorial" class="form-control" placeholder="Nombre Editorial">
+                    <input type="text" name="txtNombreAutor" class="form-control" placeholder="Nombre Autor">
                   </div>
 
-                  <label>Dirección :</label>
+                  <label>Nacionalidad :</label>
                   <div class="input-group mb-3">
                     <span class="input-group-text" id="basic-addon1">@</span>
-                    <input type="text" name="txtDireccion" class="form-control" placeholder="Dirección">
+                    <input type="text" name="txtNacionalidad" class="form-control" placeholder="Nacionalidad">
                   </div>
 
-                  <label>Teléfono :</label>
-                  <div class="input-group mb-3">
-                    <span class="input-group-text" id="basic-addon1">@</span>
-                    <input type="text" name="txtTelefonoEditorial" class="form-control" placeholder="Teléfono">
-                  </div>
                   <button type="submit" name="btnGrabar" class="btn btn-primary btn-sm mt-2">Guardar</button>
                 </div>
               </div>
@@ -282,6 +277,7 @@ if (isset($_POST['btnDelete'])) {
     </div>
   </div>
 </div>
+
 
 
 <!-- Fin Modal Nuevo -->
